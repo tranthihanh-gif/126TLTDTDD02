@@ -1,0 +1,21 @@
+fun main() {
+    println("Bai 1: ")
+    for(i in 1..10) {
+        print("$i ")
+    }
+    println("")
+    println("Bai 2: ")
+    var tong = 0
+    for(i in 1..100){
+        tong += i
+    }
+    println("tong = "+tong)
+    println("Bai 3: ")
+    println("Cac so chan tu 1 den 20 la: ")
+    for(i in 1..20){
+        if(i%2==0)
+            print("$i ")
+    }
+}_
+ _
+ G_g-

@@ -1,0 +1,25 @@
+fun main() {
+    val hoten = "Tran Thi Hanh"
+    val masv = "2415141122103"
+    val lsh = "24SK1"
+    println("ho va ten : ${hoten}");
+    println("Ma sinh vien: ${masv}");
+    println("lop sinh hoat: ${lsh}");
+    println("Lop hoc phan: 126TLTTD02");
+    println("Diem: A");
+    val math = 3
+    val programming = 6
+    val database = 9
+    val tongDiem = (math + programming + database)
+    println("Tong diem: ${tongDiem}")
+    val diemTB = (math + programming + database)/3
+    println("diem trung binh: ${diemTB}")
+    if (diemTB>5)
+    {
+        println (" Sinh vien dat")
+    }
+    else 
+    {
+        println( " sinh vien khong dat")
+    }
+}

@@ -1,12 +1,7 @@
 package com.example.viewbinding
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-
-
 import com.example.viewbinding.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -17,15 +12,35 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
-        binding.btnDisplay.setOnClickListener {
+        with(binding) {
+            setContentView(root)
 
-            val name = binding.edtName.text.toString()
-            val mssv = binding.edtMssv.text.toString()
+            tvTitle.apply {
+                text = "ỨNG DỤNG VIEW BINDING"
+                textSize = 24f
+            }
 
-            binding.tvResult.text =
-                "Xin chào: $name\nMSSV: $mssv"
+            edtName.also {
+                it.hint = "Nhập họ và tên"
+            }
+
+            edtMssv.run {
+                hint = "Nhập MSSV"
+            }
+
+            btnDisplay.setOnClickListener {
+
+                val name = edtName.text.toString().let {
+                    it.trim()
+                }
+
+                val mssv = edtMssv.text.toString().let {
+                    it.trim()
+                }
+
+                tvResult.text = "Xin chào: $name\nMSSV: $mssv"
+            }
         }
     }
 }

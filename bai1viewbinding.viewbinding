@@ -1,0 +1,26 @@
+package com.example.viewbinding
+
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.example.viewbinding.databinding.ActivityMainBinding
+
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.btnDisplay.setOnClickListener {
+
+            val name = binding.edtName.text.toString()
+            val mssv = binding.edtMssv.text.toString()
+
+            binding.tvResult.text =
+                "Xin chào: $name\nMSSV: $mssv"
+        }
+    }
+}

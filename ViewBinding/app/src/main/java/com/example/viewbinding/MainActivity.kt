@@ -5,12 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.viewbinding.databinding.ActivityMainBinding
 import com.example.viewbinding.model.Student
 import com.example.viewbinding.utils.toAcademicRanking
+import com.example.viewbinding.utils.toast
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    // Khởi tạo dữ liệu sinh viên ban đầu
+    // Dữ liệu sinh viên ban đầu
     private var currentStudent = Student(
         id = "2415141122103",
         name = "Tran Thi Hanh",
@@ -25,21 +26,39 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Gán dữ liệu ban đầu lên các Views
+        // Hiển thị thông tin ban đầu lên màn hình
         bindStudentData(currentStudent)
+
+        // Xử lý sự kiện bấm nút "CẬP NHẬT THÔNG TIN"
+        binding.btnUpdateGpa.setOnClickListener {
+            val inputStr = binding.edtNewGpa.text.toString().trim()
+            val newGpa = inputStr.toDoubleOrNull()
+
+            // Kiểm tra tính hợp lệ của GPA (0.0 đến 4.0)
+            if (newGpa == null || newGpa !in 0.0..4.0) {
+                binding.edtNewGpa.error = "Vui lòng nhập GPA hợp lệ (0.0 - 4.0)"
+                toast("Điểm GPA không hợp lệ!")
+                return@setOnClickListener
+            }
+
+            // Cập nhật lại điểm GPA mới cho đối tượng Student
+            currentStudent = currentStudent.copy(gpa = newGpa)
+
+            // Vẽ lại giao diện với thông tin mới
+            bindStudentData(currentStudent)
+
+            // Thông báo thành công
+            toast("Cập nhật điểm thành công!")
+        }
     }
 
-    // Hàm hiển thị thông tin sinh viên lên giao diện bằng ViewBinding
+    // Hàm cập nhật dữ liệu sinh viên lên các View
     private fun bindStudentData(student: Student) {
         with(binding) {
-            tvTitle.text = student.name
-            // Sử dụng các view ID thực tế mà bạn đã đặt trong layout XML
-            edtName.setText(student.name)
-            edtMssv.setText(student.id)
-
-            val ranking = student.gpa.toAcademicRanking()
-            tvResult.text = "MSSV: ${student.id} • Lớp: ${student.className}\n${student.gpa} GPA ($ranking)"
-
+            tvName.text = student.name
+            tvStudentId.text = "MSSV: ${student.id} • Lớp: ${student.className}"
+            tvGpaBadge.text = "${student.gpa}\nGPA"
+            edtNewGpa.setText(student.gpa.toString())
         }
     }
 }

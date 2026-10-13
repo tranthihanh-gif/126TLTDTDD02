@@ -5,6 +5,8 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import androidx.activity.result.contract.ActivityResultContracts
 class ChiTietChiTieuActivity : AppCompatActivity() {
     private lateinit var tvTenKhoanChi_103: TextView
     private lateinit var tvSoTien_103: TextView
@@ -15,6 +17,17 @@ class ChiTietChiTieuActivity : AppCompatActivity() {
     private var tenKhoanChi_103: String? = null
     private var soTien_103: String? = null
     private var ghiChu_103: String? = null
+
+    private val launcherChinhSua_103 =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { ketQua_103 ->
+            if (ketQua_103.resultCode == RESULT_OK) {
+                val data_103 = ketQua_103.data
+                tenKhoanChi_103 = data_103?.getStringExtra(KEY_TEN_103)
+                soTien_103 = data_103?.getStringExtra(KEY_SO_TIEN_103)
+                ghiChu_103 = data_103?.getStringExtra(KEY_GHI_CHU_103)
+                hienThiDuLieu_103()
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +46,13 @@ class ChiTietChiTieuActivity : AppCompatActivity() {
 
         hienThiDuLieu_103()
         btnQuayLai_103.setOnClickListener { finish() }
+        btnChinhSua_103.setOnClickListener {
+            val intent_103 = Intent(this, ChinhSuaChiTieuActivity::class.java)
+            intent_103.putExtra(KEY_TEN_103, tenKhoanChi_103)
+            intent_103.putExtra(KEY_SO_TIEN_103, soTien_103)
+            intent_103.putExtra(KEY_GHI_CHU_103, ghiChu_103)
+            launcherChinhSua_103.launch(intent_103)
+        }
     }
 
     private fun hienThiDuLieu_103() {

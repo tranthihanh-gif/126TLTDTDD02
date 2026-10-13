@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Tên khoản chi" android:textStyle="bold" />
+        <EditText android:id="@+id/edtTenKhoanChi_103"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="Ví dụ: Ăn trưa" android:inputType="text" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:text="Số tiền (VNĐ)" android:textStyle="bold" />
+        <EditText android:id="@+id/edtSoTien_103"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="Ví dụ: 45000"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:text="Ghi chú" android:textStyle="bold" />
+        <EditText android:id="@+id/edtGhiChu_103"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="Ghi chú thêm" android:inputType="textMultiLine" />
+
+        <Button android:id="@+id/btnThemKhoanChi_103"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="20dp" android:text="Thêm khoản chi" />
+        <Button android:id="@+id/btnXemChiTiet_103"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Xem chi tiết khoản chi" />
+    </LinearLayout>
+</ScrollView>

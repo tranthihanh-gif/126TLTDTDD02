@@ -8,3 +8,11 @@ class KhoanChi(
     var ghiChu: String,
     var daThanhToan: Boolean
 ) : Serializable
+{
+fun layThongTin(): String {
+    val trangThai = if (daThanhToan) "Đã thanh toán" else "Chưa thanh toán"
+    return "Mã: $maKhoanChi | Tên: $tenKhoanChi | Số tiền: $soTien VNĐ | Ghi chú: $ghiChu | $trangThai"
+}
+
+fun laSoTienHopLe(): Boolean = soTien > 0
+}

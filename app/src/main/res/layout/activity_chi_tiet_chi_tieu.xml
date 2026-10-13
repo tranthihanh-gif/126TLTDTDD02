@@ -10,6 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="18sp" />
+    <TextView
+        android:id="@+id/tvLoaiChi_103"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tvSoTien_103"

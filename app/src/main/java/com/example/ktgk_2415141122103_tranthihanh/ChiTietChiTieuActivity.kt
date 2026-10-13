@@ -17,6 +17,8 @@ class ChiTietChiTieuActivity : AppCompatActivity() {
     private lateinit var btnChinhSua_103: Button
     private lateinit var tvTrangThai_103: TextView
 
+    private lateinit var tvLoaiChi_103: TextView
+
     private var khoanChi_103: KhoanChi? = null
 
     private val launcherChinhSua_103 =
@@ -30,7 +32,7 @@ class ChiTietChiTieuActivity : AppCompatActivity() {
                     hienThiDuLieu_103()
                 }
             }
-            // RESULT_CANCELED: giữ nguyên dữ liệu cũ
+
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +42,7 @@ class ChiTietChiTieuActivity : AppCompatActivity() {
 
         tvTenKhoanChi_103 = findViewById(R.id.tvTenKhoanChi_103)
         tvSoTien_103 = findViewById(R.id.tvSoTien_103)
+        tvLoaiChi_103 = findViewById(R.id.tvLoaiChi_103)
         tvGhiChu_103 = findViewById(R.id.tvGhiChu_103)
         btnQuayLai_103 = findViewById(R.id.btnQuayLai_103)
         btnChinhSua_103 = findViewById(R.id.btnChinhSua_103)
@@ -84,7 +87,7 @@ class ChiTietChiTieuActivity : AppCompatActivity() {
         } else {
             tvSoTien_103.text = "Số tiền: ${kc_103.soTien} VNĐ"
         }
-
+        tvLoaiChi_103.text = "Loại chi: ${kc_103?.loaiChi ?: "Không xác định"}"
         tvGhiChu_103.text = "Ghi chú: ${kc_103?.ghiChu ?: ""}"
     }
 }

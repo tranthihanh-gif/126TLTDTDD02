@@ -53,6 +53,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun xemChiTiet_103() {
-        startActivity(Intent(this, ChiTietChiTieuActivity::class.java))
+        val intent_103 = Intent(this, ChiTietChiTieuActivity::class.java)
+        intent_103.putExtra(KEY_TEN_103, edtTenKhoanChi_103.text.toString())
+        intent_103.putExtra(KEY_SO_TIEN_103, edtSoTien_103.text.toString())
+        intent_103.putExtra(KEY_GHI_CHU_103, edtGhiChu_103.text.toString())
+        startActivity(intent_103)
     }
 }

@@ -8,6 +8,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
     private lateinit var edtTenKhoanChi_103: EditText
+
+    private var khoanChiHienTai_103: KhoanChi? = null
+    private var maTuTang_103 = 1
     private lateinit var edtSoTien_103: EditText
     private lateinit var edtGhiChu_103: EditText
     private lateinit var btnThemKhoanChi_103: Button
@@ -47,16 +50,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun themKhoanChi_103() {
-        if (kiemTraDuLieu_103()) {
-            Toast.makeText(this, "Đã thêm khoản chi: ${edtTenKhoanChi_103.text.toString().trim()}", Toast.LENGTH_SHORT).show()
-        }
+        if (!kiemTraDuLieu_103()) return
+
+        khoanChiHienTai_103 = KhoanChi(
+            maTuTang_103++,
+            edtTenKhoanChi_103.text.toString().trim(),
+            edtSoTien_103.text.toString().trim().toDouble(),
+            edtGhiChu_103.text.toString(),
+            false
+        )
+        Toast.makeText(this, khoanChiHienTai_103!!.layThongTin(), Toast.LENGTH_LONG).show()
     }
 
     private fun xemChiTiet_103() {
+        val khoanChi_103 = khoanChiHienTai_103
+        if (khoanChi_103 == null) {
+            Toast.makeText(this, "Hãy thêm khoản chi trước", Toast.LENGTH_SHORT).show()
+            return
+        }
         val intent_103 = Intent(this, ChiTietChiTieuActivity::class.java)
-        intent_103.putExtra(KEY_TEN_103, edtTenKhoanChi_103.text.toString())
-        intent_103.putExtra(KEY_SO_TIEN_103, edtSoTien_103.text.toString())
-        intent_103.putExtra(KEY_GHI_CHU_103, edtGhiChu_103.text.toString())
+        intent_103.putExtra(KEY_KHOAN_CHI_103, khoanChi_103)
         startActivity(intent_103)
     }
 }

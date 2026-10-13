@@ -7,6 +7,8 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.CheckBox
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 class MainActivity : AppCompatActivity() {
     private lateinit var edtTenKhoanChi_103: EditText
 
@@ -17,6 +19,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnThemKhoanChi_103: Button
     private lateinit var btnXemChiTiet_103: Button
     private lateinit var chkDaThanhToan_103: CheckBox
+    private lateinit var spnLoaiChi_103: Spinner
+    private val danhSachLoaiChi_103 = listOf("Ăn uống", "Đi lại", "Học tập", "Khác")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +39,12 @@ class MainActivity : AppCompatActivity() {
         btnThemKhoanChi_103 = findViewById(R.id.btnThemKhoanChi_103)
         btnXemChiTiet_103 = findViewById(R.id.btnXemChiTiet_103)
         chkDaThanhToan_103 = findViewById(R.id.chkDaThanhToan_103)
+        spnLoaiChi_103 = findViewById(R.id.spnLoaiChi_103)
+        spnLoaiChi_103.adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_dropdown_item,
+            danhSachLoaiChi_103
+        )
     }
 
     private fun kiemTraDuLieu_103(): Boolean {
@@ -59,11 +69,12 @@ class MainActivity : AppCompatActivity() {
         if (!kiemTraDuLieu_103()) return
 
         khoanChiHienTai_103 = KhoanChi(
-            maTuTang_103++,
-            edtTenKhoanChi_103.text.toString().trim(),
-            edtSoTien_103.text.toString().trim().toDouble(),
-            edtGhiChu_103.text.toString(),
-            chkDaThanhToan_103.isChecked
+            maKhoanChi = maTuTang_103++,
+            tenKhoanChi = edtTenKhoanChi_103.text.toString().trim(),
+            soTien = edtSoTien_103.text.toString().trim().toDouble(),
+            ghiChu = edtGhiChu_103.text.toString(),
+            daThanhToan = chkDaThanhToan_103.isChecked,
+            loaiChi = spnLoaiChi_103.selectedItem.toString()
         )
         Toast.makeText(this, khoanChiHienTai_103!!.layThongTin(), Toast.LENGTH_LONG).show()
     }

@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import android.widget.CheckBox
 class MainActivity : AppCompatActivity() {
     private lateinit var edtTenKhoanChi_103: EditText
 
@@ -15,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var edtGhiChu_103: EditText
     private lateinit var btnThemKhoanChi_103: Button
     private lateinit var btnXemChiTiet_103: Button
+    private lateinit var chkDaThanhToan_103: CheckBox
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         edtGhiChu_103 = findViewById(R.id.edtGhiChu_103)
         btnThemKhoanChi_103 = findViewById(R.id.btnThemKhoanChi_103)
         btnXemChiTiet_103 = findViewById(R.id.btnXemChiTiet_103)
+        chkDaThanhToan_103 = findViewById(R.id.chkDaThanhToan_103)
     }
 
     private fun kiemTraDuLieu_103(): Boolean {
@@ -60,7 +63,7 @@ class MainActivity : AppCompatActivity() {
             edtTenKhoanChi_103.text.toString().trim(),
             edtSoTien_103.text.toString().trim().toDouble(),
             edtGhiChu_103.text.toString(),
-            false
+            chkDaThanhToan_103.isChecked
         )
         Toast.makeText(this, khoanChiHienTai_103!!.layThongTin(), Toast.LENGTH_LONG).show()
     }

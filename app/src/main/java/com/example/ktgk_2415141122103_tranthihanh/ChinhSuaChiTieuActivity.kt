@@ -7,12 +7,14 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.IntentCompat
 import android.widget.Toast
+import android.widget.CheckBox
 class ChinhSuaChiTieuActivity : AppCompatActivity() {
     private lateinit var edtTenKhoanChi_103: EditText
     private lateinit var edtSoTien_103: EditText
     private lateinit var edtGhiChu_103: EditText
     private lateinit var btnLuu_103: Button
     private lateinit var btnHuy_103: Button
+    private lateinit var chkDaThanhToan_103: CheckBox
 
     private var khoanChi_103: KhoanChi? = null
 
@@ -29,11 +31,12 @@ class ChinhSuaChiTieuActivity : AppCompatActivity() {
 
         khoanChi_103 = IntentCompat.getSerializableExtra(intent, KEY_KHOAN_CHI_103, KhoanChi::class.java)
 
-        // Hiển thị sẵn dữ liệu hiện tại
+
         khoanChi_103?.let {
             edtTenKhoanChi_103.setText(it.tenKhoanChi)
             edtSoTien_103.setText(it.soTien.toString())
             edtGhiChu_103.setText(it.ghiChu)
+            chkDaThanhToan_103.isChecked = it.daThanhToan
         }
 
         btnLuu_103.setOnClickListener { luuChinhSua_103() }
@@ -47,6 +50,7 @@ class ChinhSuaChiTieuActivity : AppCompatActivity() {
         val kc_103 = khoanChi_103 ?: return
         val ten_103 = edtTenKhoanChi_103.text.toString().trim()
         val soTien_103 = edtSoTien_103.text.toString().trim().toDoubleOrNull()
+        kc_103.daThanhToan = chkDaThanhToan_103.isChecked
 
         if (ten_103.isEmpty()) {
             edtTenKhoanChi_103.error = "Tên khoản chi không được để trống"

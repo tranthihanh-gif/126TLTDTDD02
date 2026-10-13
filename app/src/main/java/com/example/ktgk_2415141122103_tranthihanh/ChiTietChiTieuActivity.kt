@@ -15,6 +15,7 @@ class ChiTietChiTieuActivity : AppCompatActivity() {
     private lateinit var tvGhiChu_103: TextView
     private lateinit var btnQuayLai_103: Button
     private lateinit var btnChinhSua_103: Button
+    private lateinit var tvTrangThai_103: TextView
 
     private var khoanChi_103: KhoanChi? = null
 
@@ -57,7 +58,15 @@ class ChiTietChiTieuActivity : AppCompatActivity() {
             val intent_103 = Intent(this, ChinhSuaChiTieuActivity::class.java)
             intent_103.putExtra(KEY_KHOAN_CHI_103, kc_103)
             launcherChinhSua_103.launch(intent_103)
+            tvTrangThai_103.text = if (kc_103 == null) {
+                "Trạng thái: không xác định"
+            } else if (kc_103.daThanhToan) {
+                "Trạng thái: Đã thanh toán"
+            } else {
+                "Trạng thái: Chưa thanh toán"
+            }
         }
+
     }
 
     private fun hienThiDuLieu_103() {

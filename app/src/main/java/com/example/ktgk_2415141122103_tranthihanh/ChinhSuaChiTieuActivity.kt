@@ -6,7 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.IntentCompat
-
+import android.widget.Toast
 class ChinhSuaChiTieuActivity : AppCompatActivity() {
     private lateinit var edtTenKhoanChi_103: EditText
     private lateinit var edtSoTien_103: EditText
@@ -50,10 +50,14 @@ class ChinhSuaChiTieuActivity : AppCompatActivity() {
 
         if (ten_103.isEmpty()) {
             edtTenKhoanChi_103.error = "Tên khoản chi không được để trống"
+            edtTenKhoanChi_103.requestFocus()
+            Toast.makeText(this, "Vui lòng nhập tên khoản chi", Toast.LENGTH_SHORT).show()
             return
         }
         if (soTien_103 == null || soTien_103 <= 0) {
             edtSoTien_103.error = "Số tiền phải là số lớn hơn 0"
+            edtSoTien_103.requestFocus()
+            Toast.makeText(this, "Số tiền không hợp lệ", Toast.LENGTH_SHORT).show()
             return
         }
 

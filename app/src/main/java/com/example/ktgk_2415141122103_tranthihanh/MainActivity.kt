@@ -40,15 +40,18 @@ class MainActivity : AppCompatActivity() {
 
         if (ten_103.isEmpty()) {
             edtTenKhoanChi_103.error = "Tên khoản chi không được để trống"
+            edtTenKhoanChi_103.requestFocus()
+            Toast.makeText(this, "Vui lòng nhập tên khoản chi", Toast.LENGTH_SHORT).show()
             return false
         }
         if (soTien_103 == null || soTien_103 <= 0) {
             edtSoTien_103.error = "Số tiền phải là số lớn hơn 0"
+            edtSoTien_103.requestFocus()
+            Toast.makeText(this, "Số tiền không hợp lệ", Toast.LENGTH_SHORT).show()
             return false
         }
         return true
     }
-
     private fun themKhoanChi_103() {
         if (!kiemTraDuLieu_103()) return
 

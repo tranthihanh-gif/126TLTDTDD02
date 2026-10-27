@@ -25,7 +25,18 @@ class MainActivity : AppCompatActivity() {
         currentToast = Toast.makeText(this, message, Toast.LENGTH_SHORT)
         currentToast?.show()
     }
+    private fun genderFromId(checkedId: Int): String = when (checkedId) {
+        R.id.rbMale -> "Nam"
+        R.id.rbFemale -> "Nữ"
+        R.id.rbOther -> "Khác"
+        else -> ""
+    }
 
+    private fun setupGenderEvent() {
+        binding.rgGender.setOnCheckedChangeListener { _, checkedId ->
+            showToast("Giới tính: ${genderFromId(checkedId)}")
+        }
+    }
     private fun setupTextEvents() {
         binding.etFullName.doAfterTextChanged { text ->
             binding.tilFullName.error = null

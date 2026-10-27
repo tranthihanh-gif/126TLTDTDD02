@@ -51,4 +51,15 @@ class MainActivity : AppCompatActivity() {
             showToast("Số điện thoại: $text")
         }
     }
+    private fun setupSocialEvents() {
+        val checkBoxes = listOf(
+            binding.cbFacebook, binding.cbInstagram, binding.cbTiktok, binding.cbZalo
+        )
+        checkBoxes.forEach { cb ->
+            cb.setOnCheckedChangeListener { _, isChecked ->
+                val state = if (isChecked) "đã chọn" else "đã bỏ chọn"
+                showToast("${cb.text} $state")
+            }
+        }
+    }
 }

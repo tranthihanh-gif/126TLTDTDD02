@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">BTEvent</string>
+    <string name="title_register">ĐĂNG KÝ</string>
+    <string name="hint_full_name">Họ và tên</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_phone">Số điện thoại</string>
+    <string name="label_gender">Giới tính</string>
+    <string name="gender_male">Nam</string>
+    <string name="gender_female">Nữ</string>
+    <string name="gender_other">Khác</string>
+    <string name="label_social">Mạng xã hội</string>
+    <string name="social_facebook">Facebook</string>
+    <string name="social_instagram">Instagram</string>
+    <string name="social_tiktok">TikTok</string>
+    <string name="social_zalo">Zalo</string>
+    <string name="btn_register">ĐĂNG KÝ</string>
+    <string name="student_info">Sinh viên: Trần Thị Hạnh - MSSV: 2415141122103</string>
 </resources>

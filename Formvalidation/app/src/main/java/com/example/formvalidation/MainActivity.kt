@@ -8,6 +8,8 @@ import android.os.SystemClock
 import android.view.View
 import com.example.formvalidation.validator.FormValidator
 import com.google.android.material.snackbar.Snackbar
+import android.content.Intent
+import com.example.formvalidation.model.User
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -87,5 +89,14 @@ class MainActivity : AppCompatActivity() {
             return
         }
         // Thành công: bước 8 sẽ chuyển sang màn hình trang chủ
+        val user = User(
+            fullName = binding.etFullName.text.toString().trim(),
+            email = binding.etEmail.text.toString().trim(),
+            phone = binding.etPhone.text.toString().trim(),
+            password = binding.etPassword.text.toString()
+        )
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.putExtra(HomeActivity.EXTRA_USER, user)
+        startActivity(intent)
     }
 }
